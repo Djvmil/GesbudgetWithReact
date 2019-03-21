@@ -6,7 +6,10 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 
 const app = express();
-
+app.use(function (req, res, next) { 
+  res.setHeader('Access-Control-Allow-Origin', '*'); 
+  next();
+});
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({

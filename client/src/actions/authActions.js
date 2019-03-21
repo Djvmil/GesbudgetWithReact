@@ -1,6 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
@@ -18,6 +19,14 @@ export const registerUser = (userData, history) => dispatch => {
       })
     );
 };
+
+export const listTrans = () => dispatch => {
+  axios.get('http://localhost:5000/api/users/transactions')
+  .then(results => results.json())
+  .then(results => console.log(results))
+  .catch(function (error) {
+      console.log(error);
+  })} ;
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios

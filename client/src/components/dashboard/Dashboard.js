@@ -11,7 +11,10 @@ import  BarEnteteWecome from '../layout/BarEnteteWelcome';
 import  TransactionGraph from '../layout/TransactionGraph';
 import  TransactionList from '../layout/TransactionList';
 class Dashboard extends Component {
-  
+  logoutUser(e) {
+    e.preventDefault();
+    this.props.logoutUser(); 
+  }
   onLoginClick = e => {
    this.props.history.push('/login');
   };

@@ -22,12 +22,15 @@ class Transaction extends Component {
             <div class="d-flex justify-content-between align-items-end flex-wrap ">
               <div class="template-demo">
               <button type="button" class="btn btn-success btn-icon-text">
-                          <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                       
+                  <a href="/debiteur" class="text-white">  
+                      <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                       
                           Debiter mon compte
+                  </a>            
               </button>
-              <button type="button" class="btn btn-success btn-icon-text">
-                          <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                        
+              <button   type="button" class="btn btn-success btn-icon-text">
+                 <a href="/crediteur" class="text-white">         <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                        
                           Crediter mon compte
+                 </a>
               </button> 
               </div>
             </div>

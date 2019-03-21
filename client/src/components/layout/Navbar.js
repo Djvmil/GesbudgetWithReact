@@ -15,142 +15,142 @@ class Navbar extends React.Component {
     const { isAuthenticated } = this.props.auth;
 
     const navb =(
-      <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="navbar-brand-wrapper d-flex justify-content-center">
-            <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
-              <a class="navbar-brand brand-logo" href="/"><img src="images/logo.png" alt="logo"/></a>
-              <a class="navbar-brand brand-logo-mini" href="/"><img src="images/logo-mini.png" alt="logo"/></a>
-              <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                <span class="mdi mdi-sort-variant"></span>
+      <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div className="navbar-brand-wrapper d-flex justify-content-center">
+            <div className="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
+              <a className="navbar-brand brand-logo" href="/"><img src="images/logo.png" alt="logo"/></a>
+              <a className="navbar-brand brand-logo-mini" href="/"><img src="images/logo-mini.png" alt="logo"/></a>
+              <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span className="mdi mdi-sort-variant"></span>
               </button>
             </div>  
           </div>
-          <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-            <ul class="navbar-nav mr-lg-4 w-100">
-              <li class="nav-item nav-search d-none d-lg-block w-100">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="search">
-                      <i class="mdi mdi-magnify"></i>
+          <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <ul className="navbar-nav mr-lg-4 w-100">
+              <li className="nav-item nav-search d-none d-lg-block w-100">
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="search">
+                      <i className="mdi mdi-magnify"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search"/>
+                  <input type="text" className="form-control" placeholder="Search now" aria-label="search" aria-describedby="search"/>
                 </div>
               </li>
             </ul>
-            <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item dropdown mr-1">
-                <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-message-text mx-0"></i>
-                  <span class="count"></span>
+            <ul className="navbar-nav navbar-nav-right">
+              <li className="nav-item dropdown mr-1">
+                <a className="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
+                  <i className="mdi mdi-message-text mx-0"></i>
+                  <span className="count"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-                  <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                  <a class="dropdown-item">
-                    <div class="item-thumbnail">
-                        <img src="images/faces/face4.jpg" alt="image" class="profile-pic"/>
+                <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
+                  <p className="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
+                  <a className="dropdown-item">
+                    <div className="item-thumbnail">
+                        <img src="images/faces/face4.jpg" alt="image" className="profile-pic"/>
                     </div>
-                    <div class="item-content flex-grow">
-                      <h6 class="ellipsis font-weight-normal">David Grey
+                    <div className="item-content flex-grow">
+                      <h6 className="ellipsis font-weight-normal">David Grey
                       </h6>
-                      <p class="font-weight-light small-text text-muted mb-0">
+                      <p className="font-weight-light small-text text-muted mb-0">
                         The meeting is cancelled
                       </p>
                     </div>
                   </a>
-                  <a class="dropdown-item">
-                    <div class="item-thumbnail">
-                        <img src="images/faces/face2.jpg" alt="image" class="profile-pic"/>
+                  <a className="dropdown-item">
+                    <div className="item-thumbnail">
+                        <img src="images/faces/face2.jpg" alt="image" className="profile-pic"/>
                     </div>
-                    <div class="item-content flex-grow">
-                      <h6 class="ellipsis font-weight-normal">Tim Cook
+                    <div className="item-content flex-grow">
+                      <h6 className="ellipsis font-weight-normal">Tim Cook
                       </h6>
-                      <p class="font-weight-light small-text text-muted mb-0">
+                      <p className="font-weight-light small-text text-muted mb-0">
                         New product launch
                       </p>
                     </div>
                   </a>
-                  <a class="dropdown-item">
-                    <div class="item-thumbnail">
-                        <img src="images/faces/face3.jpg" alt="image" class="profile-pic"/>
+                  <a className="dropdown-item">
+                    <div className="item-thumbnail">
+                        <img src="images/faces/face3.jpg" alt="image" className="profile-pic"/>
                     </div>
-                    <div class="item-content flex-grow">
-                      <h6 class="ellipsis font-weight-normal"> Johnson
+                    <div className="item-content flex-grow">
+                      <h6 className="ellipsis font-weight-normal"> Johnson
                       </h6>
-                      <p class="font-weight-light small-text text-muted mb-0">
+                      <p className="font-weight-light small-text text-muted mb-0">
                         Upcoming board meeting
                       </p>
                     </div>
                   </a>
                 </div>
               </li>
-              <li class="nav-item dropdown mr-4">
-                <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-bell mx-0"></i>
-                  <span class="count"></span>
+              <li className="nav-item dropdown mr-4">
+                <a className="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i className="mdi mdi-bell mx-0"></i>
+                  <span className="count"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-                  <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                  <a class="dropdown-item">
-                    <div class="item-thumbnail">
-                      <div class="item-icon bg-success">
-                        <i class="mdi mdi-information mx-0"></i>
+                <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
+                  <p className="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                  <a className="dropdown-item">
+                    <div className="item-thumbnail">
+                      <div className="item-icon bg-success">
+                        <i className="mdi mdi-information mx-0"></i>
                       </div>
                     </div>
-                    <div class="item-content">
-                      <h6 class="font-weight-normal">Application Error</h6>
-                      <p class="font-weight-light small-text mb-0 text-muted">
+                    <div className="item-content">
+                      <h6 className="font-weight-normal">Application Error</h6>
+                      <p className="font-weight-light small-text mb-0 text-muted">
                         Just now
                       </p>
                     </div>
                   </a>
-                  <a class="dropdown-item">
-                    <div class="item-thumbnail">
-                      <div class="item-icon bg-warning">
-                        <i class="mdi mdi-settings mx-0"></i>
+                  <a className="dropdown-item">
+                    <div className="item-thumbnail">
+                      <div className="item-icon bg-warning">
+                        <i className="mdi mdi-settings mx-0"></i>
                       </div>
                     </div>
-                    <div class="item-content">
-                      <h6 class="font-weight-normal">Parametres</h6>
-                      <p class="font-weight-light small-text mb-0 text-muted">
+                    <div className="item-content">
+                      <h6 className="font-weight-normal">Parametres</h6>
+                      <p className="font-weight-light small-text mb-0 text-muted">
                         Private message
                       </p>
                     </div>
                   </a>
-                  <a class="dropdown-item">
-                    <div class="item-thumbnail">
-                      <div class="item-icon bg-info">
-                        <i class="mdi mdi-account-box mx-0"></i>
+                  <a className="dropdown-item">
+                    <div className="item-thumbnail">
+                      <div className="item-icon bg-info">
+                        <i className="mdi mdi-account-box mx-0"></i>
                       </div>
                     </      div>
-                    <div class="item-content">
-                      <h6 class="font-weight-normal">New user registration</h6>
-                      <p class="font-weight-light small-text mb-0 text-muted">
+                    <div className="item-content">
+                      <h6 className="font-weight-normal">New user registration</h6>
+                      <p className="font-weight-light small-text mb-0 text-muted">
                         2 days ago
                       </p>
                     </div>
                   </a>
                 </div>
               </li>
-              <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <li className="nav-item nav-profile dropdown">
+                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                   <img src="images/faces/face5.jpg" alt="profile"/>
-                  <span class="nav-profile-name"> Djamil{this.auth }</span>
+                  <span className="nav-profile-name"> {isAuthenticated.name.split(" ")[0] }</span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                  <a class="dropdown-item">
-                    <i class="mdi mdi-settings text-primary"></i>
+                <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                  <a className="dropdown-item">
+                    <i className="mdi mdi-settings text-primary"></i>
                     Parametres
                   </a>
-                  <a class="dropdown-item" href="#" onClick={this.logoutUser.bind(this)}>
-                    <i class="mdi mdi-logout text-primary"></i>
+                  <a className="dropdown-item" href="#" onClick={this.logoutUser.bind(this)}>
+                    <i className="mdi mdi-logout text-primary"></i>
                     Deconnexion
                   </a>
                 </div>
               </li>
             </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-              <span class="mdi mdi-menu"></span>
+            <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span className="mdi mdi-menu"></span>
             </button>
           </div>
           </nav> 

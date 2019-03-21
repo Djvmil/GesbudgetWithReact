@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom"; 
 import axios from "axios";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";
+import { registerUser } from "../../actions/authActions"; 
+import  SideBar from '../layout/SideBar'; 
+import  BarEnteteWecome from '../layout/BarEnteteWelcome'; 
 
 const Transaction = props => (
     <tr>
@@ -28,7 +28,7 @@ class Historique extends Component {
             this.props.history.push("/");
           }
 
-         axios.get('http://localhost:5000/api/users/transactions')
+         axios.get('http://localhost:5000/api/users/transactions/')
              .then(response => {
                  this.setState({transactions: response.data});
              })
@@ -62,31 +62,48 @@ class Historique extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col s8 offset-s2">
-            <Link to="/dashboard" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i>
-            </Link>
-            <div>
-               <h3>Historique de transactions</h3>
-               <table className="table table-striped" style={{ marginTop: 20 }}>
-                   <thead>
-                       <tr>
-                           <th>Montant</th>
-                           <th>Type</th>
-                           <th>Description</th>
-                           <th>Date</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       { this.historiqueList() }
-                   </tbody>
-               </table>
-            </div>
+    
+      <div class="container-fluid page-body-wrapper"> 
+      <SideBar/>
+      <div class="main-panel">
+        <div class="content-wrapper">
+
+          <BarEnteteWecome/> 
+              
+              <div class="row">
+              <div class="col-md-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <p class="card-title">Liste de toutes les transactions  </p>
+                    <div class="table-responsive">
+                      <table id="recent-purchases-listing" class="table">
+                        <thead>
+                          <tr>
+                              <th>Montant</th>
+                              <th>Type</th>
+                              <th>Description</th>
+                              <th>Date</th> 
+                          </tr>
+                        </thead>
+                        <tbody> 
+                            { this.historiqueList() }
+                        </tbody>
+                      </table>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              </div>
+
+        </div> 
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
           </div>
-        </div>
-      </div>
+        </footer> 
+      </div> 
+      </div>  
     );
   }
 }

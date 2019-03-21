@@ -59,7 +59,7 @@ class SideBar extends React.Component {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link"  href="/historique" >
               <i class="mdi mdi-history menu-icon"></i> 
               <span class="menu-title">Liste des Transactions</span>
                

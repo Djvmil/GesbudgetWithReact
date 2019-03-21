@@ -15,7 +15,6 @@ const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
 const Transaction = require("../../models/Transaction");
-
 app.use(cors());
 // @route POST api/users/register
 // @desc Register user

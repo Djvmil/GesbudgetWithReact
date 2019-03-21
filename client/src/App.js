@@ -12,8 +12,10 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import SaveTrans from "./components/dashboard/SaveTrans";
-import Historique from "./components/dashboard/Historique"; 
-import Test from './test';
+import Historique from "./components/dashboard/Historique";  
+
+import Crediteur from "./components/layout/Crediteur";
+import Debiteur from "./components/layout/Debiteur"; 
 //import Test from "c:/Users/Moustapha S. Dieme/Desktop/Volkeno/React/gesbudget/server/client/public/test";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -45,13 +47,14 @@ class App extends Component {
             {}
             <Navbar/> 
             <Route exact path="/landing" component={Navbar} />
-            <Route exact path="/" component={Dashboard} />
-            
+            <Route exact path="/" component={Dashboard} />            
             <Route exact path="/icon" component={Icons} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/saveTrans" component={SaveTrans} />
-            <Route exact path="/historique" component={Historique} />
+            <Route exact path="/historique" component={Historique} />            
+            <Route exact path="/crediteur" component={Crediteur} />            
+            <Route exact path="/debiteur" component={Debiteur} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>

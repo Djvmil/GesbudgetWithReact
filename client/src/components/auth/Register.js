@@ -71,7 +71,8 @@ class Register extends Component {
                   <img src="../../images/logo.png" alt="logo"/>
                 </div>
                 <h4>Vous etes nouveau ici?</h4>
-                <h6 class="font-weight-light">Join us today! It takes only few steps</h6>
+                <h6 class="font-weight-light">
+Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                 <form class="pt-3" noValidate onSubmit={this.onSubmit}>
                 
                 <div class="form-group" >
@@ -123,7 +124,7 @@ class Register extends Component {
                     <div class="input-group">
                       <div class="input-group-prepend bg-transparent">
                         <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-account-outline text-primary"></i>
+                          <i class="mdi mdi-currency-usd text-primary"></i>
                         </span>
                       </div>
                       <input
