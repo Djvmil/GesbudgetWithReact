@@ -2,9 +2,13 @@
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
 
 class BarEntete extends Component {
   render() {
+    const { user, isAuthenticated } = this.props.auth;
     return (
         <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
@@ -27,7 +31,7 @@ class BarEntete extends Component {
                       <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
                       <div class="d-flex flex-column justify-content-around">
                         <small class="mb-1 text-muted">Budget</small>
-                        <h2 class="mr-2 mb-0">$577545</h2>
+                        <h2 class="mr-2 mb-0"> {user.name1}</h2> 
                       </div>
                     </div>
                     
@@ -129,5 +133,14 @@ class BarEntete extends Component {
     );
   }
 }
+BarEntete.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+}
 
-export default BarEntete;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  };
+} 
+export default connect(mapStateToProps, { logoutUser })(BarEntete);

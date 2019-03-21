@@ -12,7 +12,7 @@ class Navbar extends React.Component {
 
   
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { user, isAuthenticated } = this.props.auth;
 
     const navb =(
       <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -135,7 +135,7 @@ class Navbar extends React.Component {
               <li className="nav-item nav-profile dropdown">
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                   <img src="images/faces/face5.jpg" alt="profile"/>
-                  <span className="nav-profile-name"> {isAuthenticated.name.split(" ")[0] }</span>
+                  <span className="nav-profile-name"> {user.name }</span>
                 </a>
                 <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                   <a className="dropdown-item">
