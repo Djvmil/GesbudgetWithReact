@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react"; 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+import {withRouter } from "react-router-dom";
 
 class Login extends Component {
   constructor() {
@@ -54,24 +54,24 @@ class Login extends Component {
  
     return (
 
-      <div class="container-scroller">
-      <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
-          <div class="row flex-grow">
-            <div class="col-lg-6 d-flex align-items-center justify-content-center">
-              <div class="auth-form-transparent text-left p-3">
-                <div class="brand-logo">
+      <div className="container-scroller">
+      <div className="container-fluid page-body-wrapper full-page-wrapper">
+        <div className="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+          <div className="row flex-grow">
+            <div className="col-lg-6 d-flex align-items-center justify-content-center">
+              <div className="auth-form-transparent text-left p-3">
+                <div className="brand-logo">
                   <img src="../../images/logo.png" alt="logo"/>
                 </div>
                 <h4>Bienvenue Boss!</h4>
-                <h6 class="font-weight-light">Heureux de vous revoir !</h6>
-                <form class="pt-3" noValidate onSubmit={this.onSubmit}>
-                  <div class="form-group">
+                <h6 className="font-weight-light">Heureux de vous revoir !</h6>
+                <form className="pt-3" noValidate onSubmit={this.onSubmit}>
+                  <div className="form-group">
                     <label htmlfor="email">Email </label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-account-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-account-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -90,12 +90,12 @@ class Login extends Component {
                         {errors.emailnotfound}
                       </span>
                   </div>
-                  <div class="form-group">
+                  <div className="form-group">
                     <label htmlfor="password">Mot de passe</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-lock-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-lock-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -115,17 +115,17 @@ class Login extends Component {
                       {errors.passwordincorrect}
                     </span>
                   </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"/>
+                  <div className="my-2 d-flex justify-content-between align-items-center">
+                    <div className="form-check">
+                      <label className="form-check-label text-muted">
+                        <input type="checkbox" className="form-check-input"/>
                         Se souvenir de moi
                       </label>
                     </div>
-                    <a href="#" class="auth-link text-black">Mot de passe oublie?</a>
+                    <a href="/" className="auth-link text-black">Mot de passe oublie?</a>
                   </div>
                   
-                  <div class="my-3">
+                  <div className="my-3">
                     <button
                         style={{ 
                           borderRadius: "3px",
@@ -137,23 +137,15 @@ class Login extends Component {
                       >
                       Connexion
                     </button>
-                   </div>
-                  <div class="mb-2 d-flex">
-                    <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
-                      <i class="mdi mdi-facebook mr-2"></i>Facebook
-                    </button>
-                    <button type="button" class="btn btn-google auth-form-btn flex-grow ml-1">
-                      <i class="mdi mdi-google mr-2"></i>Google
-                    </button>
-                  </div>
-                  <div class="text-center mt-4 font-weight-light">
-                    Vous n'etes pas membre? <a href="register" class="text-primary">Creer un compte</a>
+                   </div> 
+                  <div className="text-center mt-4 font-weight-light">
+                    Vous n'etes pas membre? <a href="register" className="text-primary">Creer un compte</a>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="col-lg-6 login-half-bg d-flex flex-row">
-              <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2019  Tout droit reserver.</p>
+            <div className="col-lg-6 login-half-bg d-flex flex-row">
+              <p className="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2019  Tout droit reserver.</p>
             </div>
           </div>
         </div> 
@@ -179,5 +171,5 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { loginUser }
-)(Login);
+)(withRouter(Login));
  

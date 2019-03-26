@@ -1,34 +1,62 @@
 
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react"; 
 
 class Transaction extends Component {
+  constructor() {
+    super();
+    this.count();
+      this.state = {
+        nbCredit:"",
+        nbDebit:"" 
+    };
+  }
+
+
+  count (){
+ /*
+    axios.get('http://localhost:5000/api/users/transactions/')
+    .then(response => {
+        this.setState({transactions: response.data});
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+    
+    axios
+    .post("/api/users/count/", userData)
+    .then(res => res) 
+    .then(this.state.nbCredit => res) 
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );*/
+  } 
+
+
   render() {
     return (
-        <div class="row">
-        <div class="col-md-12 grid-margin">
-          <div class="d-flex justify-content-between flex-wrap">
-            <div class="d-flex align-items-end flex-wrap">
-              <div class="mr-md-3 mr-xl-5" >  
-                <h2 font-family="algerian"> Sama Poche, </h2>
-                <p class="mb-md-0">Avec sama poche, fini les depenses inutile.</p>
-              </div>
-              <div class="d-flex">
-                <i class="mdi mdi-home text-muted hover-cursor"></i>
-                <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Tableau de bord&nbsp;/&nbsp;</p>
-                <p class="text-primary mb-0 hover-cursor">Analytics</p>
+        <div className="row">
+        <div className="col-md-12 grid-margin">
+          <div className="d-flex justify-content-between flex-wrap">
+            <div className="d-flex align-items-end flex-wrap">
+              
+              <div className="d-flex">
+                <i className="mdi mdi-home text-muted hover-cursor"></i>
+                <p className="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Tableau de bord&nbsp;/&nbsp;</p> 
               </div>
             </div>
-            <div class="d-flex justify-content-between align-items-end flex-wrap ">
-              <div class="template-demo">
-              <button type="button" class="btn btn-success btn-icon-text">
-                  <a href="/debiteur" class="text-white">  
-                      <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                       
+            <div className="d-flex justify-content-between align-items-end flex-wrap ">
+              <div className="template-demo">
+              <button type="button" className="btn btn-success btn-icon-text">
+                  <a href="/debiteur" className="text-white">  
+                      <i className="mdi mdi-currency-usd btn-icon-prepend"></i>                                                       
                           Debiter mon compte
                   </a>            
               </button>
-              <button   type="button" class="btn btn-success btn-icon-text">
-                 <a href="/crediteur" class="text-white">         <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                        
+              <button   type="button" className="btn btn-success btn-icon-text">
+                 <a href="/crediteur" className="text-white">         <i className="mdi mdi-currency-usd btn-icon-prepend"></i>                                                        
                           Crediter mon compte
                  </a>
               </button> 

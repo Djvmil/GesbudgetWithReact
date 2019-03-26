@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom"; 
+import React, { Component } from "react"; 
 import axios from "axios";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions"; 
@@ -28,7 +27,11 @@ class Historique extends Component {
             this.props.history.push("/");
           }
 
-         axios.get('http://localhost:5000/api/users/transactions/')
+          const Data = { 
+            idUser : this.props.auth.user.id
+           };
+
+         axios.post('/api/users/transactions/',Data)
              .then(response => {
                  this.setState({transactions: response.data});
              })
@@ -41,8 +44,10 @@ class Historique extends Component {
       if (!this.props.auth.isAuthenticated) {
         this.props.history.push("/");
       }
-      
-         axios.get('http://localhost:5000/api/users/transactions/')
+      const Data = { 
+        idUser : this.props.auth.user.id
+       };
+         axios.post('/api/users/transactions/',Data)
          .then(response => {
              this.setState({transactions: response.data});
          })
@@ -117,4 +122,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { registerUser }
-)(withRouter(Historique));
+)(Historique);

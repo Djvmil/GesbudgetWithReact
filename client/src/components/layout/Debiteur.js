@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import  SideBar from '../layout/SideBar'; 
-import  BarEnteteWecome from '../layout/BarEnteteWelcome'; 
+import React, { Component } from "react"; 
+import  SideBar from '../layout/SideBar';  
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
+import { saveTrans } from "../../actions/authActions";
 import classnames from "classnames";
+import axios from "axios";
 
 
 class Debiteur extends Component {
@@ -14,11 +13,20 @@ class Debiteur extends Component {
     super();
       this.state = {
       montant: "",
-      description: "",
+      description: "", 
+      val:"",    
       errors: {}
     };
   }
- 
+  componentDidMount(){
+    axios.get('/api/users/'+this.props.auth.user.id)
+    .then(response => {
+        this.setState({val: response.data.budget}); 
+    }) 
+    .catch(function (error) {
+        console.log(error);
+    })
+  }
 
   componentWillReceiveProps(nextProps) {
      if (nextProps.auth.isAuthenticated) {
@@ -35,18 +43,20 @@ class Debiteur extends Component {
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
-
   onSubmit = e => {
     e.preventDefault();
 
-    const userData = {
+    const transactData = {
       montant: this.state.montant,
-      description: this.state.description
-    };
-
-    this.props.loginUser(userData);
+      description: this.state.description,      
+      idUser: this.props.auth.user.id,
+      type: "depense",
+    }; 
+    this.props.auth.user.budget =this.state.val - this.state.montant
+    this.props.saveTrans(transactData, this.props.history,this.props.auth.user.budget);
   };
-  render() {
+
+  render() { 
     const { errors } = this.state;
     return (
       <div class="container-fluid page-body-wrapper"> 
@@ -120,18 +130,16 @@ class Debiteur extends Component {
                   </div>  
                 </form> 
 
-
-
                   </div>
                 </div>
               </div>
               </div>
 
         </div> 
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+        <footer className="footer">
+          <div className="d-sm-flex justify-content-center justify-content-sm-between">
+            <span className="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="/" >Djamill</a>. All rights reserved.</span>
+            <span className="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i className="mdi mdi-heart text-danger"></i></span>
           </div>
         </footer> 
       </div> 
@@ -148,6 +156,9 @@ Debiteur.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
-});
+}); 
 
-export default Debiteur;
+export default connect(
+  mapStateToProps,
+  { saveTrans }
+)((Debiteur));

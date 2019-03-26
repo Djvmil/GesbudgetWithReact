@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import {withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
@@ -13,7 +13,7 @@ class Register extends Component {
       username: "",
       name: "",
       name1: "",
-      budget: "",
+      budget: Number,
       email: "",
       password: "",
       password2: "",
@@ -61,26 +61,26 @@ class Register extends Component {
 
     return (
 
-      <div class="container-scroller">
-      <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
-          <div class="row flex-grow">
-            <div class="col-lg-6 d-flex align-items-center justify-content-center">
-              <div class="auth-form-transparent text-left p-3">
-                <div class="brand-logo">
+      <div className="container-scroller">
+      <div className="container-fluid page-body-wrapper full-page-wrapper">
+        <div className="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+          <div className="row flex-grow">
+            <div className="col-lg-6 d-flex align-items-center justify-content-center">
+              <div className="auth-form-transparent text-left p-3">
+                <div className="brand-logo">
                   <img src="../../images/logo.png" alt="logo"/>
                 </div>
                 <h4>Vous etes nouveau ici?</h4>
-                <h6 class="font-weight-light">
+                <h6 className="font-weight-light">
 Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
-                <form class="pt-3" noValidate onSubmit={this.onSubmit}>
+                <form className="pt-3" noValidate onSubmit={this.onSubmit}>
                 
-                <div class="form-group" >
+                <div className="form-group" >
                 <label htmlFor="name">Prenom</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-account-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-account-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -97,12 +97,12 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div className="form-group">
                   <label htmlFor="name">Nom</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-account-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-account-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -119,12 +119,12 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div className="form-group">
                   <label htmlFor="budget">Votre budget</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-currency-usd text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-currency-usd text-primary"></i>
                         </span>
                       </div>
                       <input
@@ -140,12 +140,12 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                        <span className="text-danger">{errors.budget}</span>
                      </div>
                    </div>  
-                  <div class="form-group">
+                  <div className="form-group">
                    <label htmlFor="username">Username</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-account-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-account-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -163,12 +163,12 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                    <span className="text-danger">{errors.username}</span>      
                   </div>
 
-                  <div class="form-group">
+                  <div className="form-group">
                   <label htmlFor="email">Email</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-email-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-email-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -188,12 +188,12 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                     
        
                   </div> 
-                  <div class="form-group">
+                  <div className="form-group">
                   <label htmlFor="password">Mot de passe</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-lock-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-lock-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -212,12 +212,12 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                      <span className="text-danger">{errors.password}</span>        
                   </div>
 
-                  <div class="form-group">
+                  <div className="form-group">
                   <label htmlFor="password2">Confirmer votre Mot de passe</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0">
-                          <i class="mdi mdi-lock-outline text-primary"></i>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-transparent">
+                        <span className="input-group-text bg-transparent border-right-0">
+                          <i className="mdi mdi-lock-outline text-primary"></i>
                         </span>
                       </div>
                       <input 
@@ -236,9 +236,9 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                      <span className="text-danger">{errors.password2}</span>        
                   </div>
                   
-                  <div class="mb-4">
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
+                  <div className="mb-4">
+                    <div className="form-check">
+                      <label className="form-check-label text-muted">
                         <input 
                         onChange={this.onChange}
                         value={this.state.condition}
@@ -266,14 +266,14 @@ Rejoignez-nous aujourd'hui! Cela ne vous prendra que quelques minutes</h6>
                       S'inscrire
                     </button> 
                    </div>
-                  <div class="text-center mt-4 font-weight-light">
-                    Vous etes deja membre? <a href="login" class="text-primary">Connectez-vous</a>
+                  <div className="text-center mt-4 font-weight-light">
+                    Vous etes deja membre? <a href="login" className="text-primary">Connectez-vous</a>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="col-lg-6 register-half-bg d-flex flex-row">
-              <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2019  Tout droit reserver.</p>
+            <div className="col-lg-6 register-half-bg d-flex flex-row">
+              <p className="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2019  Tout droit reserver.</p>
             </div>
           </div>
         </div> 

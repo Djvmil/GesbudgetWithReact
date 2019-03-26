@@ -7,13 +7,13 @@ let Transaction = new Schema({
         type: String
     },
     montant: {
-        type: String
+        type: Number
     },
     description: {
         type: String
     },
     idUser: {
-        type: Number
+        type: String
     },
     date: {
     type: Date,

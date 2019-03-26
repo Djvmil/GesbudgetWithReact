@@ -68,6 +68,17 @@ router.route('/listUsers').get(function(req, res) {
    });
 });
 
+
+router.route('/listTrans').get(function(req, res) {
+  Transaction.find(function(err, users) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.json(users);
+      }
+  });
+});
+
 router.route('/addTransaction').post(function(req, res) {
     let transaction = new Transaction(req.body);
     transaction.save()
@@ -77,10 +88,23 @@ router.route('/addTransaction').post(function(req, res) {
         .catch(err => {
             res.status(400).send('adding new transaction failed');
         });
-});
+}); 
 
-router.route('/transactions').get(function(req, res) {
-   Transaction.find(function(err, transactions) {
+
+router.route('/lastTransaction').post(function(req, res) {
+  id1= req.body.idUser; 
+  Transaction.findOne({"idUser":id1},function(err, transaction) {
+    if (err) {
+        console.log(err);
+    } else {
+        res.json(transaction);
+    }
+}).sort({_id:-1}).limit(1);
+}); 
+
+router.route('/transactions').post(function(req, res) {
+  let id = req.body.idUser;
+   Transaction.find({"idUser" : id},function(err, transactions) {
        if (err) {
            console.log(err);
        } else {
@@ -89,6 +113,8 @@ router.route('/transactions').get(function(req, res) {
    });
 });
 
+
+
 router.route('/:id').get(function(req, res) {
     let id = req.params.id;
     User.findById(id, function(err, user) {
@@ -96,8 +122,39 @@ router.route('/:id').get(function(req, res) {
     });
 });
 
+router.route('/count/').post(function(req, res) {
+  let type1 = req.body.type;
+  let idUser = req.body.idUser;
+  Transaction.countDocuments({idUser:idUser,type:type1}, function(err, count) {
+      res.json(count);
+  });
+});
+
+router.route('/countTrans/').post(function(req, res) { 
+  let idUser = req.body.idUser;
+  Transaction.countDocuments({idUser:idUser}, function(err, count) {
+      res.json(count);
+  });
+});
+   
+
 router.route('/update/:id').post(function(req, res) {
     User.findById(req.params.id, function(err, user) {
+        if (!user)
+            res.status(404).send('user is not found');
+        else
+            user.budget = req.body.budget;
+            user.save().then(user => {
+                res.json('user updated');
+            })
+            .catch(err => {
+                res.status(400).send("Update not possible");
+            });
+    });
+});
+
+router.route('/updateB/').post(function(req, res) {
+    User.findById(req.body.id, function(err, user) {
         if (!user)
             res.status(404).send('user is not found');
         else
@@ -170,8 +227,5 @@ router.post("/login", (req, res) => {
     });
   });
 });
-
-
-
 
 module.exports = router;

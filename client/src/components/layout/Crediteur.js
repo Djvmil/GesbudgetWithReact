@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import  SideBar from '../layout/SideBar'; 
-import  BarEnteteWecome from '../layout/BarEnteteWelcome'; 
+import React, { Component } from "react"; 
+import  SideBar from '../layout/SideBar';  
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
+import { saveTrans } from "../../actions/authActions";
 import classnames from "classnames";
-
+import axios from "axios";
 
 class Crediteur extends Component {
 
@@ -14,11 +12,21 @@ class Crediteur extends Component {
     super();
       this.state = {
       montant: "",
-      description: "",
+      description: "", 
+      val:"",
       errors: {}
     };
   }
  
+  componentDidMount(){
+    axios.get('/api/users/'+this.props.auth.user.id)
+    .then(response => {
+        this.setState({val: response.data.budget}); 
+    }) 
+    .catch(function (error) {
+        console.log(error);
+    })
+  }
 
   componentWillReceiveProps(nextProps) {
      if (nextProps.auth.isAuthenticated) {
@@ -33,21 +41,28 @@ class Crediteur extends Component {
   }
 
   onChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ [e.target.id]: e.target.value});
+
   };
 
   onSubmit = e => {
     e.preventDefault();
-
-    const userData = {
+    
+    const transactData = {
       montant: this.state.montant,
-      description: this.state.description
+      description: this.state.description,      
+      idUser: this.props.auth.user.id,
+      type: "revenu",
     };
 
-    this.props.loginUser(userData);
+      
+console.log();  
+    this.props.auth.user.budget = parseFloat(this.state.val) + parseFloat(this.state.montant)
+    this.props.saveTrans(transactData, this.props.history,this.props.auth.user.budget);
   };
-  render() {
+  render() { 
     const { errors } = this.state;
+     
     return (
       <div class="container-fluid page-body-wrapper"> 
       <SideBar/>
@@ -113,7 +128,7 @@ class Crediteur extends Component {
                                 <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                       
                                 Annuler
                     </button>
-                    <button style={{ width: "200px"}} type="button" class="btn btn-success btn-icon-text">
+                    <button style={{ width: "200px"}} type="submit" class="btn btn-success btn-icon-text">
                                 <i class="mdi mdi-currency-usd btn-icon-prepend"></i>                                                        
                                 Valider
                     </button> 
@@ -130,7 +145,7 @@ class Crediteur extends Component {
         </div> 
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="/" >Djamil</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
           </div>
         </footer> 
@@ -140,7 +155,7 @@ class Crediteur extends Component {
   }
 }
 Crediteur.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  saveTrans: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -150,4 +165,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default Crediteur;
+export default connect(
+  mapStateToProps,
+  { saveTrans }
+)((Crediteur));
