@@ -29,6 +29,16 @@ mongoose
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
+/*
+
+  const MongoClient = require(‘mongodb’).MongoClient;
+  const uri = "mongodb+srv://waklytech:<password>@cluster0-mg5zi.mongodb.net/test?retryWrites=true";
+  const client = new MongoClient(uri, { useNewUrlParser: true });
+  client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+  });
 
 // Passport middleware
 app.use(passport.initialize());
